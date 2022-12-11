@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Speed Reading Plugin</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    #text {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      color: #333;
+      margin: 0 20px;
+    }
+
+    #text::selection {
+      background-color: #333;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Speed Reading Plugin</h1>
+
+  <p id="text">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+
+  <script>
+    //
+    // Define the speed reading plugin
+    function speedReadingPlugin() {
+      // Get the element containing the text to be read
+      var textElement = document.getElementById("text");
+
+      // Get the text content of the element
+      var textContent = textElement.textContent;
+
+      // Split the text into an array of words
+      var words = textContent.split(" ");
+
+      // Set the initial reading speed (in words per minute)
+      var speed = 400;
+
+      // Set the initial index of the current word
+      var wordIndex = 0;
+
+      // Set the interval for updating the displayed text
+      var interval = setInterval(function() {
+        // Check if the end of the text has been reached
+        if (wordIndex >= words.length) {
+          // Clear the interval
+          clearInterval(interval);
+        } else {
+          // Update the displayed text
+          textElement.textContent = words[wordIndex];
+
+          // Increment the index of the current word
+          wordIndex++;
+        }
+      }, 60000 / speed);
+    }
+
+    // Call the speed reading plugin
+    speedReadingPlugin();
+  </script>
+</body>
+</html>
